@@ -1,0 +1,58 @@
+{% extends "wynajem/szablon.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col "  id="scg2">
+        <div class="row">
+    <h1>{{ detail.samochod.model }}</h1>
+
+    <p class="text-secondary">{{ detail.samochod.nadwozie }}, Klasa {{ detail.samochod.klasa }}</p>
+    <div class="col col-xl-7" >
+    <img src="{{ detail.samochod.image.url }}" id="imscg">
+</div>
+<div class="col col-xl-5" id="zmn">
+    <table>
+<tr><td>Moc:</td> <td id="rght">{{ detail.samochod.moc_silnika }} KM</td></tr>
+<tr><td>Pojemność silnika:</td> <td id="rght"> {{ detail.samochod.pojemnosc_silnika }} cm<sup>3</sup></td></tr>
+<tr><td>Spalanie(miasto):</td> <td id="rght">{{ detail.samochod.spalanie_miasto }} l</td></tr>
+<tr><td>Spalanie(teren):</td> <td id="rght">{{ detail.samochod.spalanie_trasa }} l</td></tr>
+
+    <tr><td>Paliwo:</td> <td id="rght">{{ detail.samochod.get_paliwo_display }}</td></tr>
+    <tr><td>Klimatyzacja:</td> <td id="rght">{{ detail.samochod.get_klimatyzacja_display }}</td></tr>
+    <tr><td>Miejsca:</td> <td id="rght">{{ detail.samochod.miejsca }}</td></tr>
+    </table>
+
+</div>
+<h3 id="zmn">Wyposażenie</h3>
+<p><ul>{{ detail.samochod.wyposazenie }}</ul></p>
+</div>
+</div>
+
+<div class="col col-xl-4" id="zmn">
+    <table class="table table-bordered table-striped table-hover">
+        <tr><td><strong>Miejsce Odbioru</strong></td><td>{{ detail.get_miejsce_odbioru_display }}</td></tr>
+        <tr><td><strong>Miejsce Oddania</strong></td><td>{{ detail.get_miejsce_oddania_display }}</td></tr>
+        <tr><td><strong>Data Odbioru</strong></td><td>{{ detail.data_odbioru }}</td></tr>
+        <tr><td><strong>Data Oddania</strong></td> <td>{{ detail.data_oddania }}</td> </tr>
+
+       </table>
+       <table >
+        <tr>
+            <td><h2> Cena/dzień: </h2></td> <td><h2> {{ detail.samochod.cena }}</h2></td> <td><h2> zł</h2></td>
+
+    </tr>
+    </table>
+    <a href="{% url 'wynajem-moje' %}"><button id="chk" style="width: 100%;">Wróć</button></a>
+</div>
+
+<div style="text-align: center;">
+
+    </div>
+</div>
+</div>
+
+
+
+  
+{% endblock content %}

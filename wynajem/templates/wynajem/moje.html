@@ -1,0 +1,35 @@
+{% extends "wynajem/szablon.html" %}
+
+{% block content %}
+
+{% if Zamow %}
+<div id="spc" style="margin-bottom: 2rem;"><h1>Moje Zamówienia</h1></div>
+<div id="section">
+<table class="table table-bordered table-striped table-hover">
+  <tr id="tb">
+    <td><strong>Model</strong></td>
+  <td><strong>Miejsce Odbioru</strong></td>
+  <td><strong>Miejsce Oddania</strong></td>
+   <td><strong>Data Odbioru</strong></td>
+   <td><strong>Data Oddania</strong></td>
+ </tr>
+
+ {% for post in Zamow %}
+   <tr>
+   <td>{{ post.samochod }}</td>
+   <td>{{ post.get_miejsce_odbioru_display }}</td>
+   <td>{{ post.get_miejsce_oddania_display }}</td>
+   <td>{{ post.data_odbioru }}</td>
+   <td>{{ post.data_oddania }}</td>
+   <td><a href="{% url 'detail' post.id %}"><button id="btn3">Szczegóły</button></a></td>
+   <td><a href="{% url 'delete' post.id %}"><button id="btn3">Usuń</button></a></td>
+  
+</tr>
+   {% endfor %}
+
+ </table>
+ {% else %}
+<h1 style="text-align: center; background-color: #00529F; color: white; padding: 15px;">Brak zamówień</h1>
+ {% endif %}
+ </div> 
+{% endblock content %}

@@ -1,0 +1,55 @@
+{% extends "wynajem/szablon.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+
+
+
+<div class="container" id="section">
+  <div class="row">
+  <div class="col-5">
+    <div class="col" >
+        <div class="col">
+    <h1>{{ desc.model }}</h1>
+    <p class="text-secondary">{{ desc.nadwozie }}, Klasa {{ desc.klasa }}</p>
+        <div class="row" id="rw">
+        <div class="col-5">
+    <img id="at" src="{{ desc.image.url }}">
+        </div>
+        <div class="col-7">
+            <table>
+    <tr><td>Paliwo:</td> <td id="rght">{{ desc.get_paliwo_display }}</td></tr>
+    <tr><td>Skrzynia:</td> <td id="rght">{{ desc.get_skrzynia_display }}</td></tr>
+    <tr><td>A/C:</td> <td id="rght">{{ desc.get_klimatyzacja_display }}</td></tr>
+    <tr><td>Miejsca:</td> <td id="rght">{{ desc.miejsca }}</td></tr>
+    </table>
+        </div>
+        </div>
+    <h3 id="cn">Cena/dzień: {{ desc.cena }} zł</h3>
+    </div>
+    </div>
+  </div>
+  <div class="col">
+  <div id="zal">
+    <h1>Zamów</h1>  
+    </div>
+    
+<form method="POST" action="">  
+    {% csrf_token %}
+      <fieldset class="form-group">
+        <div class="form-group">
+            {{ form|crispy }}
+          </div>
+
+      </fieldset>
+      <div class="form-group">
+        <button type="submit" id="btn">Zamów</button>
+        
+      </div>
+      
+</form> 
+</div> 
+</div>  
+</div>
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends "wynajem/szablon.html" %}
+
+{% block content %}
+<div id="spc" style="margin-bottom: 2rem;"><h1>Nasza Oferta</h1></div>
+<div class="row">
+{% for post in samochody %}
+<div class="col-12 col-sm-12 col-lg-6 col-xl-4" >
+    <div class="col" id="itm">
+<h1>{{ post.model }}</h1>
+<p class="text-secondary">{{ post.nadwozie }}, Klasa {{ post.klasa }}</p>
+    <div class="row" id="rw">
+    <div class="col col-sm-7 col-xl-6">
+<a href="{% url 'wynajem-szczegoly' post.id %}"><img id="at" src="{{ post.image.url }}"></a>
+    </div>
+    <div class="col col-sm-5 col-xl-6">
+        <table>
+<tr><td>Paliwo:</td> <td id="rght">{{ post.get_paliwo_display }}</td></tr>
+<tr><td>Skrzynia:</td> <td id="rght">{{ post.get_skrzynia_display }}</td></tr>
+<tr><td>A/C:</td> <td id="rght">{{ post.get_klimatyzacja_display }}</td></tr>
+<tr><td>Miejsca:</td> <td id="rght">{{ post.miejsca }}</td></tr>
+</table>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col">
+<h3 id="cn">Cena/dzień: {{ post.cena }} zł</h3>
+</div>
+</div>
+<div style="text-align: center;">
+<a href="{% url 'wynajem-szczegoly' post.id %}"><button id="chk">Szczegóły</button></a>
+<a href="{% url 'wynajem-zamow' post.id %}"><button id="chk">Wybierz</button></a>
+</div>
+</div>
+</div>
+
+{% endfor %}
+
+</div>
+{% endblock content %}

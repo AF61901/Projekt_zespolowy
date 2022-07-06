@@ -1,0 +1,12 @@
+{% extends "wynajem/szablon.html" %}
+{% block content %}
+
+<div class="container" id="section" style="width: 50%; text-align: center;">
+<form action="" method="POST">
+    {% csrf_token %}
+    <h1>Czy na pewno chcesz usunąć zamówienie?</h1>
+    <p><button type="submit" id="btn">Usuń</button></p> 
+    </form>
+    <a href="{% url 'wynajem-moje' %}"><button id="btn">Anuluj</button></a>
+</div>
+{% endblock content %}

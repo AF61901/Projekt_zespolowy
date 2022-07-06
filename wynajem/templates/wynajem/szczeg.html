@@ -1,0 +1,38 @@
+{% extends "wynajem/szablon.html" %}
+
+{% block content %}
+
+<div class="row" id="scg">
+
+    
+    <h1>{{ detail.model }}</h1>
+
+    <p class="text-secondary">{{ detail.nadwozie }}, Klasa {{ detail.klasa }}</p>
+    <div class="col col-xl-6">
+    <img src="{{ detail.image.url }}" id="imscg">
+</div>
+<div class="col-2"></div>
+<div class="col col-xl-4">
+    <table>
+<tr><td>Moc:</td> <td id="rght">{{ detail.moc_silnika }} KM</td></tr>
+<tr><td>Pojemność silnika:</td> <td id="rght"> {{ detail.pojemnosc_silnika }} cm<sup>3</sup></td></tr>
+<tr><td>Spalanie(miasto):</td> <td id="rght">{{ detail.spalanie_miasto }} l</td></tr>
+<tr><td>Spalanie(teren):</td> <td id="rght">{{ detail.spalanie_trasa }} l</td></tr>
+
+    <tr><td>Paliwo:</td> <td id="rght">{{ detail.get_paliwo_display }}</td></tr>
+    <tr><td>Klimatyzacja:</td> <td id="rght">{{ detail.get_klimatyzacja_display }}</td></tr>
+    <tr><td>Miejsca:</td> <td id="rght">{{ detail.miejsca }}</td></tr>
+    <tr><td>Cena/dzień:</td> <td id="rght">{{ detail.cena }} zł</td></tr>
+    </table>
+
+</div>
+<h3>Wyposażenie</h3>
+<p><ul>{{ detail.wyposazenie }}</ul></p>
+<div style="text-align: center;">
+    <a href="{% url 'wynajem-oferta' %}"><button id="chk">Wróć</button></a>
+    <a href="{% url 'wynajem-zamow' detail.id %}"><button id="chk">Wybierz</button></a>
+    </div>
+</div>
+
+  
+{% endblock content %}
