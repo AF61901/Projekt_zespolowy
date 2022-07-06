@@ -1,0 +1,26 @@
+{% extends "wynajem/szablon.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<div class="container" id="section">
+  <div id="zal">
+    <h1> Zaloguj się!</h1>  
+    </div>
+<form method="POST" action="">  
+    {% csrf_token %}
+      <fieldset class="form-group">
+        <div class="form-group">
+            {{ form|crispy }}
+          </div>
+
+      </fieldset>
+      <div class="form-group">
+        <button type="submit" id="btn">Zaloguj</button>
+        
+      </div>
+      
+</form> 
+Nie masz konta? <a href="{% url 'rejestruj' %}">Zarejestruj się</a>    
+</div>
+{% endblock content %}
